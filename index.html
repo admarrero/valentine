@@ -42,28 +42,37 @@
             position: absolute;
             background-color: #ccc;
         }
+        .message {
+            font-size: 24px;
+            color: #ff4081;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://raw.githubusercontent.com/admarrero/valentine/main/miimage.jpg" alt="Imagen de amor">
+        <img src="https://drive.google.com/file/d/1lvKoF6iZPzdIGMzfKPHFqnDuOlBTrrj3/view?usp=sharing" alt="Imagen de amor">
         <h1>¿Quieres ser mi cita de San Valentín? 💖</h1>
         <button id="yesbuttom">Sí</button>
         <button id="nobuttom">No</button>
+        <!-- Placeholder for message -->
+        <div class="message" id="message"></div>
     </div>
 
     <script>
+        // When "Sí" is clicked, store the message and reload
         document.getElementById("yesbuttom").addEventListener("click", function() {
             sessionStorage.setItem("message", "Te amo demasiado <3");
             location.reload();
         });
 
-        // After reload, check if the message is set and display it
+        // After page reload, check if the message exists and display it
         if (sessionStorage.getItem("message")) {
-            alert(sessionStorage.getItem("message"));
-            sessionStorage.removeItem("message"); // Remove the message after showing it
+            document.getElementById("message").textContent = sessionStorage.getItem("message");
+            sessionStorage.removeItem("message"); // Remove the message after displaying
         }
 
+        // Move the "No" button around
         var nobuttom = document.getElementById("nobuttom");
         nobuttom.addEventListener("mouseover", change);
 
