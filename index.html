@@ -50,9 +50,13 @@
 
     <script>
         document.getElementById("yesbuttom").addEventListener("click", function() {
-            alert("Te amo demasiado <3");
+            sessionStorage.setItem("message", "Te amo demasiado <3");
+            location.reload();
         });
-
+	if (sessionStorage.getItem("message")) {
+            alert(sessionStorage.getItem("message"));
+            sessionStorage.removeItem("message"); // Remove the message after showing it
+        }
         var nobuttom = document.getElementById("nobuttom");
         nobuttom.addEventListener("mouseover", change);
 
